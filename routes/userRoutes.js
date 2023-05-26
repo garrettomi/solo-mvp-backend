@@ -24,15 +24,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// router.post("/", async (req, res) => {
-//   try {
-//     const user = await database("users").insert(req.body).returning("*");
-//     res.status(200).json({ data: user });
-//   } catch (error) {
-//     res.status(500).json({ error });
-//   }
-// });
-
 router.post("/", async (req, res) => {
   try {
     const { username, password } = req.body;

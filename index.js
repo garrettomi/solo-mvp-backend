@@ -11,6 +11,7 @@ const pokemonService = require("./utilities/pokemonService");
 const userRoutes = require("./routes/userRoutes");
 const gameRoutes = require("./routes/gameRoutes");
 const loginRoutes = require("./routes/loginRoutes");
+const signUpRoutes = require("./routes/signUpRoutes");
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.use("/users", userRoutes);
 app.use("/games", gameRoutes);
 app.use("/login", loginRoutes);
+app.use("/signup", signUpRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Pokemon API");
