@@ -24,6 +24,10 @@ app.use("/users", userRoutes);
 app.use("/games", gameRoutes);
 app.use("/login", loginRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Pokemon API");
+});
+
 app.listen(port, () => console.log(`listening on port: ${port}`));
 
 //FETCHED FROM POKEAPI
