@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcrypt");
 const router = express.Router();
 const environment = process.env.NODE_ENV || "development";
 const configuration = require("../knexfile")[environment];
@@ -23,9 +24,29 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// router.post("/", async (req, res) => {
+//   try {
+//     const user = await database("users").insert(req.body).returning("*");
+//     res.status(200).json({ data: user });
+//   } catch (error) {
+//     res.status(500).json({ error });
+//   }
+// });
+
 router.post("/", async (req, res) => {
   try {
-    const user = await database("users").insert(req.body).returning("*");
+    const { username, password } = req.body;
+    const salt = await bcrypt.genSalt(10);
+
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const user = await database("users")
+      .insert({
+        username,
+        password: hashedPassword,
+      })
+      .returning("*");
+
     res.status(200).json({ data: user });
   } catch (error) {
     res.status(500).json({ error });
