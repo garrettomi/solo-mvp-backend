@@ -20,15 +20,14 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  res.send("Welcome to the Pokemon API");
+});
 //ROUTES
 app.use("/users", userRoutes);
 app.use("/games", gameRoutes);
 app.use("/login", loginRoutes);
 app.use("/signup", signUpRoutes);
-
-app.get("/", (req, res) => {
-  res.send("Welcome to the Pokemon API");
-});
 
 app.listen(port, () => console.log(`listening on port: ${port}`));
 
