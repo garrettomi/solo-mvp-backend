@@ -6,7 +6,12 @@ const database = require("knex")(configuration);
 
 router.get("/", async (req, res) => {
   try {
-    const games = await database("games").select();
+    const games = await database("games").select(
+      "id",
+      "score",
+      "created_at",
+      "username"
+    );
     res.status(200).json({ data: games });
   } catch (error) {
     res.status(500).json({ error });
