@@ -30,7 +30,7 @@ module.exports = {
     seeds: {
       directory: "./db/seeds",
     },
-    // ssl: true,
-    // ssl: { rejectUnauthorized: false },
+    ssl: true,
+    ssl: { rejectUnauthorized: false },
   },
 };
