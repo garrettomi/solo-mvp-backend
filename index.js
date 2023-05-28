@@ -43,25 +43,6 @@ app.get("/pokemon", async (req, res) => {
   }
 });
 
-// app.get("/pokemon/:idOrName", async (req, res) => {
-//   const { idOrName } = req.params;
-
-//   try {
-//     const pokemon = await database("pokemon")
-//       .where("id", idOrName)
-//       .orWhere("name", idOrName)
-//       .first();
-
-//     if (pokemon) {
-//       res.status(200).json({ data: pokemon });
-//     } else {
-//       res.status(404).json({ message: "Pokemon not found" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error });
-//   }
-// });
-
 //FETCH FOR FRONTEND LOGIC
 app.get("/poketype/:name", async (req, res) => {
   try {
